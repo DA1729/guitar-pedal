@@ -81,6 +81,7 @@ guitar_effects/
 ### Prerequisites
 - **For Simulation**: Icarus Verilog (`iverilog`), GTKWave, and `bc` (for resource monitoring)
 - **For Synthesis**: Xilinx Vivado (2019.1 or later)
+- **Platform**: Tested on Linux only (Ubuntu/Debian). macOS and Windows compatibility not verified.
 
 ### Installation
 ```bash
