@@ -1,5 +1,7 @@
 **Note**: This is a hobby project done purely for fun and learning in my free time. It's not intended to be a serious commercial or research project with novel contributions - just an enjoyable exploration of digital signal processing and SystemVerilog.
 
+**Current Status**: The project is currently in simulation-only mode. Synthesis and hardware implementation are yet to be completed - the project works only in simulation for now.
+
 ## Project Structure
 
 ```
