@@ -191,4 +191,10 @@ This SystemVerilog implementation is based on the original VHDL design by:
 
 ## License
 
-This project maintains the same license as the original VHDL implementation.
+This project is licensed under the **MIT License**, following the original terms of the VHDL implementation.
+
+- Original VHDL project by **Vladi & Adi** — *FPGA Design and Implementation of Electric Guitar Audio Effects* (TAU EE Senior Year Project).
+- SystemVerilog conversion and scripting infrastructure by **Daksh Pandey**, 2025.
+
+You are free to use, modify, and distribute this project under the terms of the MIT License.  
+See the [LICENSE](LICENSE) file for full details.
