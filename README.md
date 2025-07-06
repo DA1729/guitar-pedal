@@ -1,5 +1,3 @@
-This project is a SystemVerilog conversion of the original VHDL guitar effects processor designed by Vladi & Adi as part of their TAU EE Senior year project.
-
 **Note**: This is a hobby project done purely for fun and learning in my free time. It's not intended to be a serious commercial or research project with novel contributions - just an enjoyable exploration of digital signal processing and SystemVerilog.
 
 ## Project Structure
