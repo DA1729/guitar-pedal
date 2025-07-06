@@ -3,7 +3,7 @@ This project is a SystemVerilog conversion of the original VHDL guitar effects p
 ## Project Structure
 
 ```
-guitar_ver/
+guitar_effects/
 ├── src/                    # SystemVerilog source files
 │   ├── bram.sv            # Block RAM module
 │   ├── distortion.sv      # Distortion/overdrive effect
@@ -13,14 +13,19 @@ guitar_ver/
 │   ├── clk_slow.sv        # Clock divider
 │   └── control.sv         # User interface controller
 ├── testbench/             # SystemVerilog testbenches
-│   ├── distortion_tb.sv
-│   ├── delay_tb.sv
-│   ├── octaver_tb.sv
-│   └── trem_tb.sv
-├── scripts/               # Build and synthesis scripts
-│   ├── compile_and_sim.sh # Compilation and simulation script
-│   ├── synthesize.tcl     # Vivado synthesis script
-│   └── run_vivado.sh      # Vivado runner script
+│   ├── clk_slow_tb.sv     # Clock divider testbench
+│   ├── control_tb.sv      # Control module testbench
+│   ├── distortion_tb.sv   # Distortion effect testbench
+│   ├── delay_tb.sv        # Delay effect testbench
+│   ├── octaver_tb.sv      # Octaver effect testbench
+│   └── trem_tb.sv         # Tremolo effect testbench
+├── scripts/               # Safe build and simulation scripts
+│   ├── compile_all.sh     # Compilation script with safety checks
+│   ├── run_sim.sh         # Simulation runner with resource monitoring
+│   ├── health_check.sh    # System health monitoring
+│   ├── cleanup.sh         # Safe cleanup utility
+│   ├── README.md          # Scripts documentation
+│   └── work/              # Build directory (auto-created)
 └── README.md
 ```
 
@@ -74,33 +79,89 @@ guitar_ver/
 ## Building and Simulation
 
 ### Prerequisites
-- **For Simulation**: Icarus Verilog (`iverilog`) and GTKWave
+- **For Simulation**: Icarus Verilog (`iverilog`), GTKWave, and `bc` (for resource monitoring)
 - **For Synthesis**: Xilinx Vivado (2019.1 or later)
 
 ### Installation
 ```bash
 # Ubuntu/Debian
-sudo apt-get install iverilog gtkwave
+sudo apt-get install iverilog gtkwave bc
 
 # macOS
 brew install icarus-verilog
 ```
 
-### Running Simulations
+### Quick Start
 ```bash
-cd scripts
-chmod +x compile_and_sim.sh
-./compile_and_sim.sh
+# Make scripts executable
+chmod +x scripts/*.sh
+
+# Compile all modules (with safety checks)
+./scripts/compile_all.sh
+
+# Run a specific simulation
+./scripts/run_sim.sh distortion
+
+# Run with VCD output and 60-second time limit
+./scripts/run_sim.sh distortion -v -t 60
+
+# Check system health before long simulations
+./scripts/health_check.sh
+
+# Clean up temporary files
+./scripts/cleanup.sh
 ```
 
-This will compile and simulate all modules, generating waveform files in the `work/` directory.
+### Safe Simulation Features
+The new scripts include comprehensive safety features to prevent system crashes:
 
-### Synthesis with Vivado
+- **Resource Monitoring**: Tracks memory/CPU usage, emergency stop at 95% memory
+- **Timeout Protection**: 60s compilation limit, 30s simulation default
+- **Process Management**: Automatic cleanup of hanging processes
+- **File Size Limits**: Removes large VCD files (>50MB) automatically
+- **Emergency Recovery**: Graceful shutdown with cleanup on exit
+
+### Available Modules
+All modules can be simulated individually:
+- `clk_slow` - Clock divider simulation
+- `control` - Control module simulation  
+- `delay` - Delay effect simulation
+- `distortion` - Distortion effect simulation
+- `octaver` - Octaver effect simulation
+- `trem` - Tremolo effect simulation
+
+### Script Options
+The `run_sim.sh` script supports various options:
 ```bash
-cd scripts
-chmod +x run_vivado.sh
-./run_vivado.sh
+./scripts/run_sim.sh <module> [options]
+  -t TIME     Simulation time limit (default: 30s)
+  -v          Enable VCD waveform output
+  -q          Quiet mode (less output)
+  --no-gui    Run without GUI (default)
 ```
+
+### Maintenance
+```bash
+# Check system health and get recommendations
+./scripts/health_check.sh
+
+# Clean up all temporary files
+./scripts/cleanup.sh -f
+
+# Clean only VCD files
+./scripts/cleanup.sh --vcd-only
+
+# Kill hanging processes only
+./scripts/cleanup.sh --processes
+```
+
+### Emergency Recovery
+If simulations cause system issues:
+1. Kill all processes: `./scripts/cleanup.sh --processes`
+2. Clean up files: `./scripts/cleanup.sh -f`
+3. Check system: `./scripts/health_check.sh`
+
+See `scripts/README.md` for detailed script documentation.
 
 ## Key SystemVerilog Conversion Changes
 
