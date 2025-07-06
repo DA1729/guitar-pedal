@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Safe simulation runner for guitar effects modules
 # Includes resource monitoring and automatic cleanup

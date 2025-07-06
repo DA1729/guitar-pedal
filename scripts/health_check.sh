@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # System health checker for guitar effects simulations
 # Monitors resources and provides system status

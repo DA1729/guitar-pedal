@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Safe compilation script for guitar effects SystemVerilog files
 # Includes resource monitoring and cleanup to prevent system crashes

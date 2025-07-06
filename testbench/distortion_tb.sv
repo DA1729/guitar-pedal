@@ -51,9 +51,13 @@ module distortion_tb;
         $finish;
     end
     
+    // Intermediate nets for monitoring
+    wire signed [15:0] x_signed = signed'(x);
+    wire signed [15:0] y_signed = signed'(y);
+    
     // Monitor output
     initial begin
-        $monitor("Time: %0t, x: %d, y: %d, options: %b", $time, signed'(x), signed'(y), options);
+        $monitor("Time: %0t, x: %d, y: %d, options: %b", $time, x_signed, y_signed, options);
     end
 
 endmodule

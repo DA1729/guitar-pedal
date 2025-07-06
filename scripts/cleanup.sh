@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Safe cleanup utility for guitar effects simulations
 # Removes temporary files and kills hanging processes
