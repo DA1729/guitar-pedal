@@ -33,6 +33,12 @@ module distortion_tb;
         end
     end
     
+    // VCD dump
+    initial begin
+        $dumpfile("distortion_waves.vcd");
+        $dumpvars(0, distortion_tb);
+    end
+    
     // Test sequence
     initial begin
         // Run simulation for a reasonable time

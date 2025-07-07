@@ -34,6 +34,10 @@ module delay_tb;
     
     // Test sequence
     initial begin
+        // Enable VCD dump
+        $dumpfile("delay_waves.vcd");
+        $dumpvars(0, delay_tb);
+        
         // Run simulation for a reasonable time
         #(CLOCK_PERIOD * 1000);
         

@@ -1,0 +1,12 @@
+=== Guitar Effects Compilation Script ===
+Project directory: /home/da999/Documents/fun/projects/guitar_effects
+Work directory: /home/da999/Documents/fun/projects/guitar_effects/scripts/work
+
+[1;33mSystem Resources:[0m
+  Memory usage: 63.3%
+  CPU usage: 50%
+
+[1;33mCompiling trem...[0m
+[0;32m✓ trem compiled successfully[0m
+[1;33mCleaning up...[0m
+[0;32mCleanup completed.[0m

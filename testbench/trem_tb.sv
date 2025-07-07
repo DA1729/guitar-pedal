@@ -55,6 +55,10 @@ module trem_tb;
     
     // Test sequence
     initial begin
+        // Enable VCD dump
+        $dumpfile("trem_waves.vcd");
+        $dumpvars(0, trem_tb);
+        
         // Run simulation for a reasonable time
         #(CLOCK_PERIOD380 * 100);
         

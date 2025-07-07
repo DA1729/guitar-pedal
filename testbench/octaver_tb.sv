@@ -34,6 +34,10 @@ module octaver_tb;
     
     // Test sequence
     initial begin
+        // Enable VCD dump
+        $dumpfile("octaver_waves.vcd");
+        $dumpvars(0, octaver_tb);
+        
         // Run simulation for a reasonable time
         #(CLOCK_PERIOD * 1000);
         
